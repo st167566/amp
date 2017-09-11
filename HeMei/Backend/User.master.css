@@ -1,0 +1,100 @@
+﻿/**{
+    padding:0;
+    margin:0;
+    font-size:14px;    
+}
+a{
+    text-decoration:none;
+    color: #063c5b;
+}
+img
+{
+    border:none;
+}
+.TextBox
+{
+    border:1px solid #000;
+    line-height:24px;
+    height:24px;
+    
+}
+.FileUpload
+{
+    border:1px solid #000;
+    line-height:24px;
+    height:24px;
+    width:120px;
+}
+table.MyTable tr
+{
+    height:32px;   
+    line-height:32px;
+}
+#HeadDiv{
+    width:100%;
+    height:36px;
+    line-height:36px;
+    background-color:#000;
+    color:#fff;
+    text-indent:20px;    
+}
+#HeadDiv a{
+    color: #fff;
+    padding:0 20px;
+}
+#HeadDiv a:hover
+{
+    color:#ff00cc;
+}
+#Wrapper{
+    width:100%;
+}
+#SideBar{   
+    width:200px;
+    float:left;
+    border-right:1px solid #ccc;
+}
+#Avatar {
+    margin:30px 24px 10px 24px;    
+}
+#Avatar p
+{
+    text-align:center;
+    line-height:24px;
+    height:24px;
+}
+#SideMenu h2 {
+    height: 36px;
+    line-height:36px;
+    background-color: #73aef7;
+    text-indent: 40px;
+}
+#SideMenu ul li {
+    list-style: none;
+    line-height: 36px;
+    height: 36px;
+    text-indent: 40px;
+    border-bottom: 1px solid #73aef7;
+}
+#SideMenu ul li a {
+    text-decoration: none;
+    color: #063c5b;
+}*/
+#Content 
+{
+    padding:30px 30px;
+    width: 100%;
+    float: left;
+    margin:8px 0px;
+    /* border: 1px solid #ff00cc; */
+}
+/*#Foot {
+    clear:both;    
+    height:36px;
+    line-height:36px;
+    background-color:#000;
+    color:#fff;
+    font-size:12px;
+    font-family:'宋体' Verdana; 
+    text-indent:20px;    
+}*/

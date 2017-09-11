@@ -1,0 +1,11 @@
+<!--以下为模板页引用内容-->
+skins.min.js		beyond模板js
+beyond.min.js
+jquery-2.1.4.min.js	JQ2.1.4版本
+bootstrap.js		bootstrap框架js
+chart			Sparklines绘制图谱的插件
+jquery.cookie.js	Cookie管理插件
+Vue.js			Vue
+jquery.tags.js		bootstrap tag插件用于添加标签
+ajaxfileupload		AJAX上传插件，用于图片上传，结合ashx可重复使用
+bootstrap-datetimepicker.min	bootstrap日期插件JS

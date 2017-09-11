@@ -1,0 +1,195 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Front.master.cs" Inherits="Front" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>禾美 HeMei.in</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/fontawesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="WildWood Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="js/jquery-1.11.1.min.js"></script>
+<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+ <%--<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+</script>--%>
+<!---End-smoth-scrolling---->
+<script src="js/responsiveslides.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <!--start-header-section-->
+			<div class="header">
+				<div>
+                    <div id="entry" class="text-right">
+                        <span><a href="index.aspx" target="_blank"><i class="fa fa-home"></i>&nbsp;网站首页</a></span>&nbsp;|
+                        <span><a href="Login.aspx"><i class="fa fa-lock"></i>&nbsp;用户登录</a></span>&nbsp;|               
+                        <span><a href="Register.aspx"><i class="fa fa-user"></i>&nbsp;用户注册</a></span>
+                    </div>
+					<div class="header-top">
+						<div class="logo">
+							<a href="index.aspx"><img src="/images/禾美.png" /></a> 
+						</div>
+					</div>
+					<div class="header-bottom">
+				<nav class="navbar navbar-default" style="background-color: rgba(255, 255, 255, 0.49)">
+			  <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+					</div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav cl-effect-16">
+        <li class="active"><a href="index.aspx" data-hover="网站首页">网站首页 <span class="sr-only">(current)</span></a></li>
+        <li><a href="Product_View.aspx" data-hover="全媒体平台">全媒体平台</a></li>
+        <li><a href="WebsiteGroup.aspx">网站群系统</a></li>
+	    <li><a href="Article_List.aspx?ID=28" data-hover="成功案例">成功案例</a></li>
+		<li><a href="Article_List.aspx?ID=29" data-hover="帮助中心">帮助中心</a></li>
+		<li><a href="About.aspx" data-hover="关于我们">关于我们</a></li>
+        <li><a href="Article_List.aspx?ID=27" data-hover="新闻资讯">新闻资讯</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+						<script>
+							 $("span.menu").click(function(){
+							 $(".top-menu ul").slideToggle("slow" , function(){
+							 });
+							 });
+							 </script>
+							<!-- //script for menu -->
+						<div class="clearfix"></div>
+						</div>
+				</div>
+			</div>
+		<!--end header-section-->
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">        
+        </asp:ContentPlaceHolder>
+        <!-- footer-section-starts-here -->
+      <div class="product-section">
+        <div class="wrap2">
+	        <div class="row">
+	            <div class="col-md-3 col-sm-4 col-xs-6 product">
+                    <div style="text-align: center; margin-bottom: 20px;">
+	                    <a href="Product_View.aspx"><h4>全媒体平台</h4></a>
+	                    <ul>
+	                        <li>产品概览</li>
+	                        <li>产品特点</li>
+	                        <li>功能模块</li>
+	                    </ul>
+                    </div>
+	            </div>
+                <div class="col-md-3 col-sm-4 col-xs-6 product">
+                    <div style="text-align: center; margin-bottom: 20px;">
+	                    <a href="WebsiteGroup.aspx"><h4>网站群系统</h4></a>
+	                    <ul>
+	                        <li>需求分析</li>
+	                        <li>产品概述</li>
+	                        <li>产品特点</li>
+                            <li>产品功能</li>
+	                    </ul>
+                    </div>
+	            </div>
+	            <div class="col-md-3 col-sm-4 col-xs-6 product">
+                    <div style="text-align: center; margin-bottom: 20px;">
+	                    <a href="SuccessCase.aspx"><h4>成功案例</h4></a>
+                        <ul>
+	                        <li>教育技术与传播学院</li>
+	                        <li>多维度精神康复评估系统</li>
+	                        <li>Resys</li>
+                            <li>广东顺德现代职业教育研究院</li>
+	                    </ul>
+                    </div>
+	            </div>   
+	            <div class="col-md-3 col-sm-4 col-xs-6 product">
+                    <div style="text-align: center; margin-bottom: 20px;">
+	                    <a href="HelpCenter.aspx"><h4>帮助中心</h4></a>
+                        <ul>
+                            <li>反馈通道</li>
+	                        <li>在线客服</li>
+	                    </ul>
+                    </div>
+                </div>  
+                <div class="clearfix"></div>
+                <div class="col-md-3 col-sm-4 col-xs-6 product">
+                    <div style="text-align: center; margin-bottom: 20px;">
+	                    <a href="About.aspx"><h4>关于我们</h4></a>
+                        <ul>
+	                        <li>公司简介</li>
+	                        <li>团队成员</li>
+	                        <li>加入我们</li>
+                            <li>联系我们</li>
+	                    </ul>
+                    </div>
+                </div>                
+                <div class="col-md-3 col-sm-4 col-xs-6 product">
+                    <div style="text-align: center; margin-bottom: 20px;">
+	                    <a href="Article_List.aspx"><h4>新闻资讯</h4></a>
+                        <ul>
+	                        <li>公司新闻</li>
+	                        <li>行业资讯</li>
+	                    </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-6 product">
+                    <div style="text-align: center; margin-bottom: 20px;">
+	                    <a href="###"><h4>联系方式</h4></a>
+                        <ul>
+                            <li>邮编：510000</li>
+                            <li>公众号：禾美软件</li>   
+                            <li><img src="images/QR.jpg" height="100"/></li>           
+	                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>       
+    </div>
+    <div class="footer-bottom">
+        <div id="exit" class="text-center">
+            Copyright © 2016-2017 广州禾美软件有限公司 www.hemei.in <a href="http://www.miit.gov.cn/">粤ICP备17010005号M</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="gototop js-top">
+	    <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+	</div>
+    </form>
+    <script>
+        $(function () {
+            $(window).scroll(function () {
+
+                var $win = $(window);
+                if ($win.scrollTop() > 200) {
+                    $('.js-top').addClass('active');
+                } else {
+                    $('.js-top').removeClass('active');
+                }
+
+            });
+        });
+    </script>
+</body>
+</html>

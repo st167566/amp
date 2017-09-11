@@ -1,0 +1,734 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="User.master.cs" Inherits="User" %>
+
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    
+    <title>AMP全媒体平台</title>
+    <meta name="description" content="后台" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta content="always" name="referrer" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- 旧版母版的css -->
+    <link rel="stylesheet" type="text/css" href="User.master.css" />
+    <script src="assets/js/vue-resource.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <!--Basic Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <%--<link href="#" rel="stylesheet" />--%>
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <%--<link href="assets/css/weather-icons.min.css" rel="stylesheet" />--%>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-datetimepicker.css" />
+
+    <!--Beyond styles-->
+   <%-- <link href="assets/css/beyond.min.css" rel="stylesheet" type="text/css" />--%>
+    <link href="assets/css/beyond.min.css" rel="stylesheet" type="text/css" />
+    <%--<link href="assets/css/demo.min.css" rel="stylesheet" />
+    <link href="assets/css/typicons.min.css" rel="stylesheet" />
+    <link href="assets/css/animate.min.css" rel="stylesheet" />--%>
+    <%--<link href="#" rel="stylesheet" type="text/css" />--%>
+
+    <!--[if lte IE 8]>
+        <script>
+            alert("为获得最佳效果，建议使用IE9、Chrome10或更高版本的浏览器。");
+        </script>
+    <![endif]-->
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    <script type="text/javascript" src="assets/js/skins.min.js"></script>
+   
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+          
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+         <input id="UserName1" type="hidden" value="<%= Session["UserName"] %>"/>
+        <!--  /Loading Container -->
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="navbar-container">
+                    <!-- Navbar Barnd -->
+                    <div class="navbar-header pull-left">
+                        <a href="User_Center.aspx" class="navbar-brand" style="padding:10px 0px 0px 10px;font-size: 20px;">
+                            <small>
+                               AMP全媒体平台
+                            </small>
+                        </a>
+                    </div>
+                    <!-- /Navbar Barnd -->
+
+                    <!-- Sidebar Collapse -->
+                    <div class="sidebar-collapse" id="sidebar-collapse">
+                        <i class="collapse-icon fa fa-bars"></i>
+                    </div>
+                    <!-- /Sidebar Collapse -->
+                    <!-- Account Area and Settings --->
+                    <div class="navbar-header pull-right"  id="allweb">
+                        <div class="navbar-account">
+                            <ul class="account-area">
+                                <li>
+                                    <a style="padding:7px 0px 0px 10px;font-size: 20px;">
+                      <asp:DropDownList ID="Webs" runat="server" Visible="false" Height="30" AutoPostBack="True"  OnSelectedIndexChanged="Webs_SelectedIndexChanged" >
+                      </asp:DropDownList>
+                                        </a>
+                            <%--   <select v-model="webselected">
+                               <option v-for="item in  allweb" v-bind:value="item.ID">{{item.WebName}}</option>
+                                </select>--%>
+                                </li>
+                                <li>
+                                    <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                                        <div class="avatar" title="个人信息" style="border-left: 0px;">
+                                            <asp:Image ID="AvatarImage" runat="server" Width="25" Height="25" />
+                                        </div>
+                                        <section>
+                                        <h2><span class="profile"><%= Session["UserName"] %>/<%= Session["RoleName"] %></span></h2>
+                                    </section>
+                                    </a>
+                                    <!--Login Area Dropdown-->
+                                    <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                                        <!--Avatar Area-->
+                                        <li>
+                                            <div class="avatar-area">
+                                                <asp:Image ID="AvatarImage1" runat="server" Width="110" Height="110" />
+                                                 <span class="caption" style="margin-left:5px;"><%= Session["UserName"] %> </span>
+                                            </div>
+                                        </li>
+                                        <!--Avatar Area-->
+                                        <li class="edit">
+                                            <a href="#" class="pull-left" style="margin-left:25px;"><%= Session["Email"] %> </a>
+                                        </li>
+                                        <!--Theme Selector Area-->
+                                        <li class="theme-area">
+                                            <ul class="colorpicker" id="skin-changer">
+                                                <li><a class="colorpick-btn" href="#" style="background-color: #5DB2FF;" rel="assets/css/skins/blue.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="#" style="background-color: #2dc3e8;" rel="assets/css/skins/azure.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="#" style="background-color: #03B3B2;" rel="assets/css/skins/teal.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="#" style="background-color: #53a93f;" rel="assets/css/skins/green.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="#" style="background-color: #FF8F32;" rel="assets/css/skins/orange.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="#" style="background-color: #cc324b;" rel="assets/css/skins/pink.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="#" style="background-color: #AC193D;" rel="assets/css/skins/darkred.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="#" style="background-color: #8C0095;" rel="assets/css/skins/purple.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="#" style="background-color: #0072C6;" rel="assets/css/skins/darkblue.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="#" style="background-color: #585858;" rel="assets/css/skins/gray.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="#" style="background-color: #474544;" rel="assets/css/skins/black.min.css"></a></li>
+                                                <li><a class="colorpick-btn" href="#" style="background-color: #001940;" rel="assets/css/skins/deepblue.min.css"></a></li>
+                                            </ul>
+                                        </li>
+                                        <!--/Theme Selector Area-->
+                                        <li class="dropdown-footer">
+                                            <asp:HyperLink ID="HyperLink" runat="server">退出</asp:HyperLink>
+                                        </li>
+                                    </ul>
+                                    <!--/Login Area Dropdown-->
+                                </li>
+                                <!-- /Account Area -->
+                                <!--Note: notice that setting div must start right after account area list.
+                            no space must be between these elements-->
+                                <!-- Settings -->
+                            </ul>
+                            <div class="setting">
+                                  <asp:HyperLink ID="BackToIndex" runat="server">
+                                      <i class="icon glyphicon glyphicon-home"></i>
+                                  </asp:HyperLink>
+                            </div>
+                            <!-- Settings -->
+                        </div>
+                    </div>
+                    <!-- /Account Area and Settings -->
+                </div>
+            </div>
+        </div>
+        <!-- /Navbar -->
+        <!-- Main Container -->
+        <div class="main-container container-fluid">
+            <!-- Page Container -->
+            <div class="page-container">
+                <!-- Page Sidebar -->
+      <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Conditional" runat="server">
+           <%--     <Triggers>
+                      <asp:AsyncPostBackTrigger ControlID="head" />
+                  </Triggers>--%>
+       <ContentTemplate>
+                <div class="page-sidebar" id="sidebar">
+                    <!-- Page Sidebar Header-->
+                      <div class="sidebar-header-wrapper">
+                        <asp:TextBox ID="searchTextBox" Runat="server" class="searchinput" placeholder="全站搜索" />
+                        <i class="searchicon fa fa-search"></i>    
+                        <div class="searchhelper">查找资源，用户，文章</div>
+                          <asp:Button ID="goButton" Runat="server" 
+          Text="Go" Width="36px" onclick="goButton_Click" />
+                  </div>
+                    <!-- /Page Sidebar Header -->
+                    <!-- Sidebar Menu -->
+                    <ul class="nav sidebar-menu">
+                     <li>
+                        <a href="#">
+                            <asp:CheckBox ID="allWordsCheckBox" Runat="server" Text="精确搜索"  TextAlign="Right" style="margin-left:120px;"/>
+                        </a>
+                    </li>
+                        <!--Dashboard-->
+                        <li class="active">
+                            <a href="User_Center.aspx">
+                                <i class="menu-icon glyphicon glyphicon-home"></i>
+                                <span class="menu-text">个人主页 </span>
+                            </a>
+                        </li>
+
+                        <asp:PlaceHolder ID="Web" runat="server">
+                        <li class="active">
+                            <a href="Web_Man.aspx">
+                                 <i class="menu-icon fa fa-desktop"></i>
+                                <span class="menu-text">网站管理 </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                        </li>
+                        </asp:PlaceHolder>
+
+                        <asp:PlaceHolder ID="WebSetting" runat="server">
+                         <li>
+                            <a href="#" class="menu-dropdown">
+                                 <i class="menu-icon fa  fa-asterisk"></i>
+                                <span class="menu-text">系统设置 </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                             <ul class="submenu">
+                                 <li>
+                                     <a href="#" class="menu-dropdown">
+                                           <span class="menu-text">
+                                               用户管理
+                                        </span>
+                                        <i class="menu-expand"></i>
+                                     </a>
+                                     <ul class="submenu">
+                                        <li>
+                                            <a href="User_Manage.aspx">
+                                                <i class="menu-icon fa fa-pencil-square-o"></i>
+                                                <span class="menu-text">管理用户</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="Tags_Man.aspx">
+                                                <i class="menu-icon fa fa-pencil-square-o"></i>
+                                                <span class="menu-text">标签管理</span>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                 </li>
+
+                                 <li>
+                           
+                            <a href="#" class="menu-dropdown">
+                                <span class="menu-text">分类管理 </span>
+
+                                <i class="menu-expand"></i>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="Cat_Man.aspx">
+                                        <span class="menu-text">一级分类管理</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                          <li>
+                           
+                            <a href="#" class="menu-dropdown">
+                                <span class="menu-text">菜单管理 </span>
+
+                                <i class="menu-expand"></i>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="CatMenu_Man.aspx">
+                                        <span class="menu-text">一级菜单管理</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                             </ul>
+                        </li>
+                  </asp:PlaceHolder>
+                        
+                        
+                        <!--Pages-->
+                         <asp:PlaceHolder ID="Article" runat="server"  >
+                        <li>
+                            <a href="#" class="menu-dropdown">
+                                <i class="menu-icon glyphicon glyphicon-paperclip"></i>
+                                <span class="menu-text">文章管理 </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="Articles_Add.aspx">
+                                        <span class="menu-text">添加文章</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="Articles_Man.aspx">
+                                        <span class="menu-text">文章列表</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="Articles_draft.aspx">
+                                        <span class="menu-text">草稿箱</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="Articles_Recyle.aspx">
+                                        <span class="menu-text">回收站</span>
+                                    </a>
+                                </li>
+                             <%--   文章panel--%>
+                            </ul>
+                        </li>
+                         </asp:PlaceHolder>
+                        <!--More Pages-->
+                        <asp:PlaceHolder ID="Files" runat="server">
+                        <li>
+                            <a href="#" class="menu-dropdown">
+                                <i class="menu-icon glyphicon glyphicon-link"></i>
+
+                                <span class="menu-text">资源管理
+                                </span>
+                                <i class="menu-expand"></i>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="File_Upload.aspx">
+                                        <span class="menu-text">上传资源</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="File_Man.aspx">
+                                        <span class="menu-text">媒体管理</span>
+                                    </a>
+                                </li>
+                               <%-- 资源panel--%>
+                                 <asp:PlaceHolder ID="FilePanel" runat="server">
+                               <%-- <li>
+                                    <a href="File_Recycle.aspx">
+                                        <span class="menu-text">回收站</span>
+                                    </a>
+                                </li>--%>
+                               </asp:PlaceHolder>
+                                 <%-- 资源panel--%>
+                                <li>
+                                
+                                    <a href="#" class="menu-dropdown">
+                                        <span class="menu-text">文件夹
+                                        </span>
+                                        <i class="menu-expand"></i>
+                                    </a>
+
+                                    <ul class="submenu">
+                                        <li>
+                                            <a href="Folder_Man.aspx">
+                                                <i class="menu-icon fa fa-camera"></i>
+                                                <span class="menu-text">文件夹管理</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="Folder_Add.aspx">
+                                                <i class="menu-icon fa fa-camera"></i>
+                                                <span class="menu-text">新建文件夹</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                          </asp:PlaceHolder>    
+                        <!--UI Elements-->
+                        <li>
+                            <a href="#" class="menu-dropdown">
+                                <i class="menu-icon fa fa-desktop"></i>
+                                <span class="menu-text">个人信息 </span>
+                                <i class="menu-expand"></i>
+                            </a>
+
+                            <ul class="submenu">
+
+                                 <li>
+                                    <a href="User_Edit.aspx">
+                                        <span class="menu-text">信息修改</span>
+                                    </a>
+                                </li>
+                      
+                            </ul>
+                        </li>
+               
+                      <%--  焦点图Panel--%>
+                        <asp:PlaceHolder ID="FocusPanel" runat="server">
+                       <li>
+                            <a href="#" class="menu-dropdown">
+                                <i class="menu-icon fa fa-pencil-square-o"></i>
+                                <span class="menu-text">焦点图管理 </span>
+
+                                <i class="menu-expand"></i>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="Focus_Man.aspx">
+                                        <span class="menu-text">焦点图管理</span>
+                                    </a>
+                                </li>
+                             
+                                <li>
+                                    <a href="Focus_Recycle.aspx">
+                                        <span class="menu-text">候选焦点图</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                      </asp:PlaceHolder>
+                            <%--  焦点图Panel--%>
+                        <!-- /Sidebar Menu -->
+
+                        </ul>
+                </div>
+  
+               </ContentTemplate>
+             </asp:UpdatePanel>
+                <!-- /Page Sidebar -->
+                <!-- Page Content -->
+                <div class="page-content">
+                
+                    <!-- Main Container -->
+
+                    <!--Basic Scripts-->
+                    <script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
+                    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+
+                    <!--Beyond Scripts-->
+                   <script type="text/javascript" src="assets/js/beyond.min.js"></script>
+
+                     <!--时间选择插件-->
+                      <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+                      <script src="assets/js/bootstrap-datetimepicker.zh-CN.js"></script>
+                      <script src="assets/js/bootstrap-datetimepicker.fr.js"></script>
+
+
+                    <!--Page Related Scripts-->
+                    <!--Sparkline Charts Needed Scripts-->
+                    <script type="text/javascript" src="assets/js/charts/sparkline/jquery.sparkline.js"></script>
+                    <script type="text/javascript" src="assets/js/charts/sparkline/sparkline-init.js"></script>
+
+                    <!--Easy Pie Charts Needed Scripts-->
+                    <script type="text/javascript" src="assets/js/charts/easypiechart/jquery.easypiechart.js"></script>
+                    <script type="text/javascript" src="assets/js/charts/easypiechart/easypiechart-init.js"></script>
+
+                    <!--Flot Charts Needed Scripts-->
+                    <script type="text/javascript" src="assets/js/charts/flot/jquery.flot.js"></script>
+                    <script type="text/javascript" src="assets/js/charts/flot/jquery.flot.resize.js"></script>
+                    <script type="text/javascript" src="assets/js/charts/flot/jquery.flot.pie.js"></script>
+                    <script type="text/javascript" src="assets/js/charts/flot/jquery.flot.tooltip.js"></script>
+                    <script type="text/javascript" src="assets/js/charts/flot/jquery.flot.orderBars.js"></script>
+                    <script src="assets/js/jquery.cookie.js"></script>
+               
+                   <script type="text/javascript">
+                        $(function () {
+                            $(".sidebar-menu li ul li a").click(function () {
+                                $.cookie("navstation", $(this).html(), { path: "/" });
+                            });
+                            $(".submenu li a").click(function () {
+                                $.cookie("navstation2", $(this).html(), { path: "/" });
+                            });
+                        });
+                        var navstation = $.cookie("navstation");
+                        if (navstation != null) {
+                            $(".sidebar-menu li ul li a").each(function () {
+                                if ($(this).html() == navstation) {
+                                    $(this).parent().parent().css("display", "block");
+                                    $(this).parent().parent().css("display", "block");
+                                }
+                            });
+                        }
+                        var navstation2 = $.cookie("navstation2");
+                        if (navstation2 != null) {
+                            $(".submenu li a").each(function () {
+                                if ($(this).html() == navstation2) {
+                                    $(this).parent().parent().parent().parent().css("display", "block");
+                                }
+                            });
+                        }
+                     </script>
+                     <script type="text/javascript">
+                         // If you want to draw your charts with Theme colors you must run initiating charts after that current skin is loaded
+                         $(window).bind("load", function () {
+
+                             /*Sets Themed Colors Based on Themes*/
+                             themeprimary = getThemeColorFromCss('themeprimary');
+                             themesecondary = getThemeColorFromCss('themesecondary');
+                             themethirdcolor = getThemeColorFromCss('themethirdcolor');
+                             themefourthcolor = getThemeColorFromCss('themefourthcolor');
+                             themefifthcolor = getThemeColorFromCss('themefifthcolor');
+
+                             //Sets The Hidden Chart Width
+                             $('#dashboard-bandwidth-chart')
+                                 .data('width', $('.box-tabbs')
+                                     .width() - 20);
+
+                             //-------------------------Visitor Sources Pie Chart----------------------------------------//
+                             var data = [
+                                 {
+                                     data: [[1, 21]],
+                                     color: '#fb6e52'
+                                 },
+                                 {
+                                     data: [[1, 12]],
+                                     color: '#e75b8d'
+                                 },
+                                 {
+                                     data: [[1, 11]],
+                                     color: '#a0d468'
+                                 },
+                                 {
+                                     data: [[1, 10]],
+                                     color: '#ffce55'
+                                 },
+                                 {
+                                     data: [[1, 46]],
+                                     color: '#5db2ff'
+                                 }
+                             ];
+                             var placeholder = $("#dashboard-pie-chart-sources");
+                             placeholder.unbind();
+
+                             $.plot(placeholder, data, {
+                                 series: {
+                                     pie: {
+                                         innerRadius: 0.45,
+                                         show: true,
+                                         stroke: {
+                                             width: 4
+                                         }
+                                     }
+                                 }
+                             });
+
+                             //------------------------------Visit Chart------------------------------------------------//
+                             var data2 = [{
+                                 color: themesecondary,
+                                 label: "Direct Visits",
+                                 data: [[3, 2], [4, 5], [5, 4], [6, 11], [7, 12], [8, 11], [9, 8], [10, 14], [11, 12], [12, 16], [13, 9],
+                                 [14, 10], [15, 14], [16, 15], [17, 9]],
+
+                                 lines: {
+                                     show: true,
+                                     fill: true,
+                                     lineWidth: .1,
+                                     fillColor: {
+                                         colors: [{
+                                             opacity: 0
+                                         }, {
+                                             opacity: 0.4
+                                         }]
+                                     }
+                                 },
+                                 points: {
+                                     show: false
+                                 },
+                                 shadowSize: 0
+                             },
+                                 {
+                                     color: themeprimary,
+                                     label: "Referral Visits",
+                                     data: [[3, 10], [4, 13], [5, 12], [6, 16], [7, 19], [8, 19], [9, 24], [10, 19], [11, 18], [12, 21], [13, 17],
+                                     [14, 14], [15, 12], [16, 14], [17, 15]],
+                                     bars: {
+                                         order: 1,
+                                         show: true,
+                                         borderWidth: 0,
+                                         barWidth: 0.4,
+                                         lineWidth: .5,
+                                         fillColor: {
+                                             colors: [{
+                                                 opacity: 0.4
+                                             }, {
+                                                 opacity: 1
+                                             }]
+                                         }
+                                     }
+                                 },
+                                 {
+                                     color: themethirdcolor,
+                                     label: "Search Engines",
+                                     data: [[3, 14], [4, 11], [5, 10], [6, 9], [7, 5], [8, 8], [9, 5], [10, 6], [11, 4], [12, 7], [13, 4],
+                                     [14, 3], [15, 4], [16, 6], [17, 4]],
+                                     lines: {
+                                         show: true,
+                                         fill: false,
+                                         fillColor: {
+                                             colors: [{
+                                                 opacity: 0.3
+                                             }, {
+                                                 opacity: 0
+                                             }]
+                                         }
+                                     },
+                                     points: {
+                                         show: true
+                                     }
+                                 }
+                             ];
+                             var options = {
+                                 legend: {
+                                     show: false
+                                 },
+                                 xaxis: {
+                                     tickDecimals: 0,
+                                     color: '#f3f3f3'
+                                 },
+                                 yaxis: {
+                                     min: 0,
+                                     color: '#f3f3f3',
+                                     tickFormatter: function (val, axis) {
+                                         return "";
+                                     },
+                                 },
+                                 grid: {
+                                     hoverable: true,
+                                     clickable: false,
+                                     borderWidth: 0,
+                                     aboveData: false,
+                                     color: '#fbfbfb'
+
+                                 },
+                                 tooltip: true,
+                                 tooltipOpts: {
+                                     defaultTheme: false,
+                                     content: " <b>%x May</b> , <b>%s</b> : <span>%y</span>",
+                                 }
+                             };
+                             var placeholder = $("#dashboard-chart-visits");
+                             var plot = $.plot(placeholder, data2, options);
+
+                             //------------------------------Real-Time Chart-------------------------------------------//
+                             var data = [],
+                                 totalPoints = 300;
+
+                             function getRandomData() {
+
+                                 if (data.length > 0)
+                                     data = data.slice(1);
+
+                                 // Do a random walk
+
+                                 while (data.length < totalPoints) {
+
+                                     var prev = data.length > 0 ? data[data.length - 1] : 50,
+                                         y = prev + Math.random() * 10 - 5;
+
+                                     if (y < 0) {
+                                         y = 0;
+                                     } else if (y > 100) {
+                                         y = 100;
+                                     }
+
+                                     data.push(y);
+                                 }
+
+                                 // Zip the generated y values with the x values
+
+                                 var res = [];
+                                 for (var i = 0; i < data.length; ++i) {
+                                     res.push([i, data[i]]);
+                                 }
+
+                                 return res;
+                             }
+                             // Set up the control widget
+                             var updateInterval = 100;
+                             var plot = $.plot("#dashboard-chart-realtime", [getRandomData()], {
+                                 yaxis: {
+                                     color: '#f3f3f3',
+                                     min: 0,
+                                     max: 100,
+                                     tickFormatter: function (val, axis) {
+                                         return "";
+                                     }
+                                 },
+                                 xaxis: {
+                                     color: '#f3f3f3',
+                                     min: 0,
+                                     max: 100,
+                                     tickFormatter: function (val, axis) {
+                                         return "";
+                                     }
+                                 },
+                                 colors: [themeprimary],
+                                 series: {
+                                     lines: {
+                                         lineWidth: 0,
+                                         fill: true,
+                                         fillColor: {
+                                             colors: [{
+                                                 opacity: 0.5
+                                             }, {
+                                                 opacity: 0
+                                             }]
+                                         },
+                                         steps: false
+                                     },
+                                     shadowSize: 0
+                                 },
+                                 grid: {
+                                     hoverable: true,
+                                     clickable: false,
+                                     borderWidth: 0,
+                                     aboveData: false
+                                 }
+                             });
+
+                             function update() {
+
+                                 plot.setData([getRandomData()]);
+
+                                 plot.draw();
+                                 setTimeout(update, updateInterval);
+                             }
+                             update();
+
+
+                             //-------------------------Initiates Easy Pie Chart instances in page--------------------//
+                             InitiateEasyPieChart.init();
+
+                             //-------------------------Initiates Sparkline Chart instances in page------------------//
+                             InitiateSparklineCharts.init();
+                         });
+
+    </script>
+ 
+                    <div id="Content">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+ 
+            </div>
+                </div>
+            </div>
+    </form>
+</body>
+</html>

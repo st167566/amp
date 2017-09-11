@@ -1,0 +1,13 @@
+DB.cs				数据库链接类
+FileHelper.cs			用于文件类（暂留没用的...）	
+Articles_Add_WebService.cs	Article_Add页面的类（各种后台方法）
+Util.cs				（各种验证方法？最基本的模板？）
+User_WebService.cs		
+Link.cs				
+EnumClass.cs				
+PageOperate.cs			
+Search_Access.cs
+SearchConfiguration.cs
+SqlHeaper.cs
+Video_WebService.cs
+WeiXinRequest.cs
